@@ -9,7 +9,6 @@ use Lokalkoder\NotifyMe\NotifyMe\PostMan;
 
 class NotificationScheduler extends Command
 {
-
     /**
      * The name and signature of the console command.
      *

@@ -16,8 +16,8 @@ class NotifyMe extends Model implements \OwenIt\Auditing\Contracts\Auditable
     protected $table = 'notify_me';
 
     protected $casts = [
-      'recipients' => 'array',
-      'source' => 'array',
-      'assignee' => 'array',
+        'recipients' => 'array',
+        'source' => 'array',
+        'assignee' => 'array',
     ];
 }

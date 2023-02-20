@@ -24,23 +24,21 @@ class NotifyMeServiceProvider extends PackageServiceProvider
             ->hasMigrations(['create_notify_me_table'])
             ->hasAssets()
             ->hasCommands([NotificationScheduler::class])
-            ->hasInstallCommand(function(InstallCommand $command) {
-                $command->startWith(function(InstallCommand $command) {
-                        $command->info('Initiating Notify Me Installation');
-                    })
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command->startWith(function (InstallCommand $command) {
+                    $command->info('Initiating Notify Me Installation');
+                })
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
                     ->copyAndRegisterServiceProviderInApp()
                     ->askToStarRepoOnGitHub('lokalkoder/notify-me')
-                    ->endWith(function(InstallCommand $command) {
-                        $command->callSilently("vendor:publish", [
-                            '--tag' => "notify-me-assets",
+                    ->endWith(function (InstallCommand $command) {
+                        $command->callSilently('vendor:publish', [
+                            '--tag' => 'notify-me-assets',
                         ]);
                         $command->info('May the force with you...');
                     });
-
-
             });
     }
 

@@ -7,8 +7,11 @@ use Illuminate\View\Component;
 class Layout extends Component
 {
     public ?string $header = null;
+
     public ?string $contentHeader = null;
+
     public ?string $contentSummary = null;
+
     /**
      * Create a new component instance.
      *

@@ -19,20 +19,20 @@ class NotifyMe extends Action
         $year = $request->input('year');
         $month = $request->input('month');
 
-       return \Lokalkoder\NotifyMe\NotifyMe\Models\NotifyMe::whereYear('date', $year)
-           ->whereMonth('date', $month+1)
-           ->get()
-           ->map(function ($item) {
-               return [
-                   'notify_date' => Carbon::parse($item->date)->toDateTimeString(),
-                   'notify_title' => $item->subject,
-                   'notify_recipients' => collect($item->recipients)->implode(','),
-                   'notify_message' => $item->message,
-                   'notify_recur' => $item->is_recur,
-                   'notify_notified' => $item->has_notified,
-                   'notify_uuid' => $item->uuid,
-               ];
-           });
+        return \Lokalkoder\NotifyMe\NotifyMe\Models\NotifyMe::whereYear('date', $year)
+            ->whereMonth('date', $month + 1)
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'notify_date' => Carbon::parse($item->date)->toDateTimeString(),
+                    'notify_title' => $item->subject,
+                    'notify_recipients' => collect($item->recipients)->implode(','),
+                    'notify_message' => $item->message,
+                    'notify_recur' => $item->is_recur,
+                    'notify_notified' => $item->has_notified,
+                    'notify_uuid' => $item->uuid,
+                ];
+            });
 
 //       dd($notifications);
 //
@@ -47,8 +47,8 @@ class NotifyMe extends Action
 
     public function notifyMe(Request $request)
     {
-        $emailInput = collect($request->input('email'))->mapWithKeys(function($email, $index) {
-            return [ 'email.' . $index => $email ];
+        $emailInput = collect($request->input('email'))->mapWithKeys(function ($email, $index) {
+            return ['email.'.$index => $email];
         })->toArray();
 
         $request->validate(
@@ -63,7 +63,7 @@ class NotifyMe extends Action
         );
 
         $hour = ($request->input('ampm') == 'pm') ? $request->input('hours') + 12 : $request->input('hours');
-        $date = Carbon::parse($request->input('date') . ' ' . $hour . ':' . $request->input('minutes'));
+        $date = Carbon::parse($request->input('date').' '.$hour.':'.$request->input('minutes'));
 
         $notification = new \Lokalkoder\NotifyMe\NotifyMe\Models\NotifyMe();
         $notification->recipients = $request->input('email');
@@ -71,11 +71,11 @@ class NotifyMe extends Action
         $notification->message = $request->input('message');
         $notification->is_recur = $request->input('recur') === 'on';
         $notification->date = $date;
-        $notification->source = [ 'id' => $request->input('id') , 'model' => $request->input('model')];
+        $notification->source = ['id' => $request->input('id'), 'model' => $request->input('model')];
         $notification->assignee = auth()->user()->toArray();
         $notification->save();
 
-        $request->session()->flash('status', $notification->subject . ' Notification was successfully saved');
+        $request->session()->flash('status', $notification->subject.' Notification was successfully saved');
 
         return redirect($request->input('back') ?? route('notify.me'));
     }
@@ -85,7 +85,5 @@ class NotifyMe extends Action
         $notification = \Lokalkoder\NotifyMe\NotifyMe\Models\NotifyMe::whereUuid($request->input('notify'))->first();
         $notification->is_recur = $request->input('is_recur');
         $notification->save();
-
-
     }
 }

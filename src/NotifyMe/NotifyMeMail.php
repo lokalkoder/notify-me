@@ -54,7 +54,7 @@ class NotifyMeMail extends Mailable implements ShouldQueue
                     'label' => config('app.name'),
                     'link' => config('app.url'),
                 ],
-                'signature' => config('app.name')
+                'signature' => config('app.name'),
             ],
         );
     }
@@ -76,6 +76,7 @@ class NotifyMeMail extends Mailable implements ShouldQueue
      * @return array
      *
      * @throws \ReflectionException
+     *
      * @TODO : specific to override markdown component
      */
 //    protected function buildMarkdownView()
