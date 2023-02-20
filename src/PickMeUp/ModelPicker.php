@@ -17,20 +17,17 @@ class ModelPicker
     {
         $class = (new ClassPicker($class))->getClass();
 
-        $this->model = $class->where(($useUUid) ? 'uuid' : $class->notifyMeIdentifier() , $identifier)->first();
+        $this->model = $class->where(($useUUid) ? 'uuid' : $class->notifyMeIdentifier(), $identifier)->first();
     }
 
-    /**
-     * @return array
-     */
     public function notifier(): array
     {
         return [
-          'subject' => $this->model->notifyMeSubject(),
-          'summary' => $this->model->notifyMeSummary(),
-          'content' => $this->model->notifyMeContent(),
-          'date' => $this->model->notifyMeWhen(),
-          'receiver' => $this->model->notifyMeReceiver(),
+            'subject' => $this->model->notifyMeSubject(),
+            'summary' => $this->model->notifyMeSummary(),
+            'content' => $this->model->notifyMeContent(),
+            'date' => $this->model->notifyMeWhen(),
+            'receiver' => $this->model->notifyMeReceiver(),
         ];
     }
 }

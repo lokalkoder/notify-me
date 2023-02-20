@@ -17,11 +17,11 @@ return [
     'pick-me' => [
         'recipient' => [
             'source' => env('NM_RECIPIENT_SOURCE', 'App\Models\User'),
-            'field' =>  [
+            'field' => [
                 'name' => env('NM_RECIPIENT_NAME', 'name'),
                 'email' => env('NM_RECIPIENT_EMAIL', 'email'),
-            ]
-        ]
+            ],
+        ],
     ],
 
     /*
@@ -36,7 +36,7 @@ return [
         'mail' => [
             'connection' => env('QUEUE_CONNECTION', 'sync'),
             'name' => env('NM_QUEUE_MAIL', 'notify-me-mail'),
-        ]
+        ],
     ],
 
     /*
@@ -51,8 +51,8 @@ return [
         'mail' => [
             'sending' => [],
             'sent' => [
-                NotifyMeSent::class
-            ]
-        ]
+                NotifyMeSent::class,
+            ],
+        ],
     ],
 ];

@@ -6,5 +6,4 @@ use Illuminate\Routing\Controller;
 
 class Action extends Controller
 {
-
 }

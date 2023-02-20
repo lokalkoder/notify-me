@@ -14,5 +14,5 @@ return [
         'hour' => 'Hour',
         'minute' => 'Minute',
         'ampm' => 'AM/PM',
-    ]
+    ],
 ];

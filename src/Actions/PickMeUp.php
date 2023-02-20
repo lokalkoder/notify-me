@@ -20,7 +20,7 @@ class PickMeUp extends Action
             [
                 'notifier' => (new ModelPicker($request->get('model'), $request->get('id')))->notifier(),
                 'recipients' => $this->getRecipients(),
-                'back' => $request->server('HTTP_REFERER')
+                'back' => $request->server('HTTP_REFERER'),
             ]
         );
     }
@@ -35,6 +35,7 @@ class PickMeUp extends Action
 
     /**
      * Recipients listing.
+     *
      * @return mixed
      */
     protected function getRecipients()

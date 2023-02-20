@@ -9,8 +9,6 @@ trait UseDefaultPickUpLine
 {
     /**
      * Definition for reference id field.
-     *
-     * @return string
      */
     public function notifyMeIdentifier(): string
     {
@@ -19,8 +17,6 @@ trait UseDefaultPickUpLine
 
     /**
      * Definition for reference id field.
-     *
-     * @return string
      */
     public function notifyMeSubject(): string
     {
@@ -47,8 +43,6 @@ trait UseDefaultPickUpLine
 
     /**
      * Definition of notification content.
-     *
-     * @return mixed
      */
     public function notifyMeContent(): mixed
     {
@@ -61,7 +55,6 @@ trait UseDefaultPickUpLine
 
     /**
      * Definition of notification date & time.
-     * @return Carbon|null
      */
     public function notifyMeWhen(): ?Carbon
     {
@@ -74,7 +67,6 @@ trait UseDefaultPickUpLine
 
     /**
      * Definition of notification receiver.
-     * @return mixed
      */
     public function notifyMeReceiver(): mixed
     {
