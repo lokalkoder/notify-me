@@ -12,7 +12,7 @@
     @endphp
 
     <div class="mx-auto max-w-screen-md">
-        <form action="{{ route('notify.me') }}" method="post" class="space-y-8 bg-white dark:bg-gray-700 p-4">
+        <form action="{{ route('notify.post') }}" method="post" class="space-y-8 bg-white dark:bg-gray-700 p-4">
                 @csrf
                 <input type="hidden" value="{{ request()->get('model') }}" name="model">
                 <input type="hidden" value="{{ request()->get('id') }}" name="id">
